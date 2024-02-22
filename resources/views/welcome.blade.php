@@ -14,24 +14,24 @@
         <!--  favicon -->
         <link rel="shortcut icon" href="assets/img/ico/favicon.png">
         <!--  apple-touch-icon -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('public/cooming-soon/assets/img/ico/apple-touch-icon-144-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('public/cooming-soon/assets/img/ico/apple-touch-icon-114-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('public/cooming-soon/assets/img/ico/apple-touch-icon-72-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('cooming-soon/assets/img/ico/apple-touch-icon-144-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('cooming-soon/assets/img/ico/apple-touch-icon-114-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('cooming-soon/assets/img/ico/apple-touch-icon-72-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" href="{{asset('cooming-soon/assets/img/ico/apple-touch-icon-57-precomposed.png')}}">
 
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,900' rel='stylesheet' type='text/css'>
         <!-- FontAwesome CSS -->
-        <link href="{{asset('public/cooming-soon/assets/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/assets/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
         <!-- Material Icons CSS -->
-        <link href="{{asset('public/cooming-soon/assets/fonts/iconfont/material-icons.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/assets/fonts/iconfont/material-icons.css')}}" rel="stylesheet">
         <!-- materialize -->
-        <link href="{{asset('public/cooming-soon/assets/materialize/css/materialize.min.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/assets/materialize/css/materialize.min.css')}}" rel="stylesheet">
         <!-- Bootstrap -->
-        <link href="{{asset('public/cooming-soon/assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Style CSS -->
-        <link href="{{asset('public/cooming-soon/style.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/style.css')}}" rel="stylesheet">
         <!-- Custom CSS -->
-        <link href="{{asset('public/cooming-soon/assets/css/custom.css')}}" rel="stylesheet">
+        <link href="{{asset('cooming-soon/assets/css/custom.css')}}" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -238,18 +238,18 @@
 
 
         <!-- jQuery -->
-        <script src="{{asset('public/cooming-soon/assets/js/jquery-2.1.3.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/materialize/js/materialize.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/jquery.easing.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/coundown-timer.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/smoothscroll.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/jquery.stellar.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/imagesloaded.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/jquery.inview.min.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/ajaxchimp.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/ajaxchimp-config.js')}}"></script>
-        <script src="{{asset('public/cooming-soon/assets/js/scripts.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/jquery-2.1.3.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/materialize/js/materialize.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/jquery.easing.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/coundown-timer.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/smoothscroll.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/jquery.stellar.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/imagesloaded.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/jquery.inview.min.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/ajaxchimp.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/ajaxchimp-config.js')}}"></script>
+        <script src="{{asset('cooming-soon/assets/js/scripts.js')}}"></script>
 
     </body>
   
