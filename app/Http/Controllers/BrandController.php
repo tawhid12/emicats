@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers;
+
+
+use App\Http\Requests\Brand\StoreBrandRequest;
+use App\Models\Brand;
+use App\Service\BrandService;
+use Illuminate\Http\Request;
+
+class BrandController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $brands = Brand::all();
+        return view("brands.index", compact("brands"));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view("brands.create");
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreBrandRequest $request,  BrandService $brandService)
+    {
+        try {
+            //dd($request->all());
+            $brandService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            //throw new \Exception('offer not created');
+            return redirect()->back()->with(['success' => 'Brand Created']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Something Went Wrong']);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Offer $offer)
+    {
+        return view('show-offer', compact('offer'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Offer $offer)
+    {
+        $this->authorize('update', $offer);
+        $categories = Category::orderBy('title', 'asc')->get();
+        $locations = Location::orderBy('title', 'asc')->get();
+        return view("edit-offer", compact('offer', 'categories', 'locations'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(StoreOfferRequest $request, Offer $offer, OfferService $offerService)
+    {
+
+        try {
+            //dd($request->all());
+            $this->authorize('update', $offer);
+            $offerService->update($offer, $request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            //throw new \Exception('offer not created');
+            return redirect()->back()->with(['success' => 'Offer Created']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Something Went Wrong']);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}
