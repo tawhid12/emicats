@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
-class OfferRequest extends FormRequest
+class StoreProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class OfferRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'price' => 'required|integer|min:0',
-            'description' => 'required',
             'image' => ['nullable', File::image()->max('10mb')],
-            'categories' => ['required ', 'array', 'min:1'],
-            'locations' => ['required ', 'array', 'min:1'],
         ];
     }
 }

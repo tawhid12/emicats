@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Constants\Role;
-use App\Http\Requests\Brand\StoreBrandRequest;
-use App\Models\Brand;
+use App\Http\Requests\CarModel\StoreCarModelRequest;
+use App\Models\CarModel;
 use App\Models\User;
-use App\Service\BrandService;
+use App\Service\CarModelService;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class CarModelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $brands = Brand::paginate(10);
-        return view("brands.index", compact("brands"));
+        $car_models = CarModel::paginate(10);
+        return view("car_models.index", compact("car_models"));
     }
 
     /**
@@ -25,19 +25,19 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view("brands.create");
+        return view("car_models.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrandRequest $request,  BrandService $brandService)
+    public function store(StoreCarModelRequest $request,  CarModelService $CarModelService)
     {
         try {
             //dd($request->all());
-            $brandService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            $CarModelService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
             //throw new \Exception('offer not created');
-            return redirect()->back()->with(['success' => 'Brand Created']);
+            return redirect()->back()->with(['success' => 'Car Model Created']);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => 'Something Went Wrong']);
         }

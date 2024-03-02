@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Constants\Status;
 
 return new class extends Migration
 {
@@ -12,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('carmodel_product', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->float('price');
-            $table->string('status')->default(Status::DRAFT);
-            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('car_model_id')->constrained('car_models');
+            $table->foreignId('product_id')->constrained('products');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('carmodel_product');
     }
 };

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Brand List') }}
+            {{ __('Model List') }}
         </h2>
     </x-slot>
 
@@ -9,11 +9,11 @@
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
                 <div class="flex justify-end">
-                    <a href="{{ route('brands.create') }}"
+                    <a href="{{ route('carmodels.create') }}"
                         class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full my-3">Create New
-                        Brand</a>
+                        Model</a>
                 </div>
-                <form action="{{ route('brands.index') }}">
+                <form action="{{ route('carmodels.index') }}">
                     @csrf
                     <div class="flex justify-center space-x-4 my-3">
                         <!-- Rounded Select Options -->
@@ -59,21 +59,17 @@
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-4 py-2 w-20">No.</th>
-                            <th class="px-4 py-2">Brand Name</th>
-                            <th class="px-4 py-2">Image</th>
+                            <th class="px-4 py-2">Model Name</th>
                             <th class="px-4 py-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($brands as $b)
+                        @forelse ($car_models as $c)
                             <tr>
                                 <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2">{{ $b->b_name }}</td>
+                                <td class="border px-4 py-2">{{ $c->model_name }}</td>
                                 <td class="border px-4 py-2">
-                                    <img class="w-20 h-16 object-cover" src="{{ asset($b->image_url) }}" alt="">
-                                </td>
-                                <td class="border px-4 py-2">
-                                    <a href="{{ route('brands.edit', $b) }}"
+                                    <a href="{{ route('carmodels.edit', $c) }}"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
                                     <a href=""
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</a>
@@ -84,7 +80,7 @@
                     </tbody>
                 </table>
                 <div class="py-4">
-                    {{ $brands->links() }}
+                    {{ $car_models->links() }}
                 </div>
             </div>
         </div>

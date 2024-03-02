@@ -18,6 +18,15 @@
                     <x-nav-link :href="route('brands.index')" :active="request()->routeIs('brands.index')">
                         {{ __('Brands') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('carmodels.index')" :active="request()->routeIs('carmodels.index')">
+                        {{ __('Car Models') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('manufacturers.index')" :active="request()->routeIs('manufacturers.index')">
+                        {{ __('Manuafacturers') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                        {{ __('Products') }}
+                    </x-nav-link>
                 </div>
             </div>
 
