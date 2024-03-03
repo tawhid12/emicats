@@ -13,8 +13,12 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -38,6 +42,43 @@
     </div>
     @include('layouts.alert')
     @include('layouts.image-upload-preview-script');
+    <script>
+        $(document).ready(function() {
+
+            new TomSelect('#select-brand', {
+                plugins: ['remove_button'],
+                maxItems: 5,
+                onItemAdd: function() {
+                    this.setTextboxValue('')
+                },
+            });
+
+            new TomSelect('#select-carmodels', {
+                plugins: ['remove_button'],
+                maxItems: 5,
+                onItemAdd: function() {
+                    this.setTextboxValue('')
+                },
+            });
+
+            new TomSelect('#select-years', {
+                plugins: ['remove_button'],
+                maxItems: 5,
+                onItemAdd: function() {
+                    this.setTextboxValue('')
+                },
+            });
+
+            new TomSelect('#select-components', {
+                plugins: ['remove_button'],
+                maxItems: 5,
+                onItemAdd: function() {
+                    this.setTextboxValue('')
+                },
+            });
+
+        });
+    </script>
 </body>
 
 </html>

@@ -12,56 +12,56 @@
                         @csrf
                         <!-- Brand Name -->
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="title">
                                 Title <span class="text-red-400 text-xs">(Required)</span>
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus">
-                            @error('b_name')
+                                id="title" type="text" name="title" autofocus="autofocus">
+                            @error('title')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
-                                Ref
+                            <label class="block font-medium text-sm text-gray-700" for="ref">
+                                Reference
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus">
-                            @error('b_name')
+                                id="ref" type="text" name="ref" autofocus="autofocus">
+                            @error('ref')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
-                                Ref 1
+                            <label class="block font-medium text-sm text-gray-700" for="ref1">
+                                Reference One
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus">
-                            @error('b_name')
+                                id="ref1" type="text" name="ref1" autofocus="autofocus">
+                            @error('ref1')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
-                                Ref 2
+                            <label class="block font-medium text-sm text-gray-700" for="ref2">
+                                Reference
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus">
-                            @error('b_name')
+                                id="ref2" type="text" name="ref2" autofocus="autofocus">
+                            @error('ref2')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="">
                                 Select Brand
                             </label>
                             <select class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full"
-                                id="select-brand" name="brands[]" autocomplete="off">
-                                <option value="">Select Brands</option>
+                                id="select-brand" name="brands[]" autocomplete="off" multiple>
+                                <option value="">Select</option>
                                 @forelse ($brands as $b)
                                     <option value="{{ $b->id }}">{{ $b->b_name }}</option>
                                 @empty
@@ -69,12 +69,12 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="">
                                 Select Model
                             </label>
                             <select class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full"
-                                id="select-carmodels" name="carmodels[]" autocomplete="off">
-                                <option value="">Select Car Models</option>
+                                id="select-carmodels" name="carmodels[]" autocomplete="off" multiple>
+                                <option value="">Select</option>
                                 @forelse ($carmodels as $c)
                                     <option value="{{ $c->id }}">{{ $c->model_name }}</option>
                                 @empty
@@ -82,23 +82,23 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="image">
+                            <label class="block font-medium text-sm text-gray-700" for="description">
                                 Description
                             </label>
                             <textarea rows="4"
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" name="b_name" autofocus="autofocus"></textarea>
-                            @error('b_name')
+                                id="description" name="description" autofocus="autofocus"></textarea>
+                            @error('description')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="">
                                 Select Year
                             </label>
                             <select class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full"
-                                id="select-carmodels" name="carmodels[]" autocomplete="off">
-                                <option value="">Select Car Models</option>
+                                id="select-years" name="years[]" autocomplete="off" multiple>
+                                <option value="">Select</option>
                                @php for ($i = 1970; $i <= date('Y'); $i++) {@endphp
                                     <option value="{{$i}}">{{$i}}</option>
                                 @php
@@ -107,51 +107,51 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="manufacturer_id">
                                 Select Manufacturer
                             </label>
                             <select class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full"
-                                id="select-carmodels" name="carmodels[]" autocomplete="off">
-                                <option value="">Select Car Models</option>
-                                @forelse ($carmodels as $c)
-                                    <option value="{{ $c->id }}">{{ $c->model_name }}</option>
+                                id="" name="manufacturer_id" autocomplete="off">
+                                <option value="">Select</option>
+                                @forelse ($manufacturers as $m)
+                                    <option value="{{ $m->id }}">{{ $m->manu_name }}</option>
                                 @empty
                                 @endforelse
                             </select>
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="">
                                 Select Components
                             </label>
                             <select class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full"
-                                id="select-carmodels" name="carmodels[]" autocomplete="off">
-                                <option value="">Select Car Models</option>
-                                @forelse ($carmodels as $c)
-                                    <option value="{{ $c->id }}">{{ $c->model_name }}</option>
+                                id="select-components" name="components[]" autocomplete="off" multiple>
+                                <option value="">Select</option>
+                                @forelse ($components as $c)
+                                    <option value="{{ $c->id }}">{{ $c->c_name }}</option>
                                 @empty
                                 @endforelse
                             </select>
                         </div>
                          <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                            <label class="block font-medium text-sm text-gray-700" for="weight">
                                 Weight
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus">
-                            @error('b_name')
+                                id="weight" type="text" name="weight" autofocus="autofocus">
+                            @error('weight')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Logo Upload -->
                         <div class="mt-4">
                             <label class="block font-medium text-sm text-gray-700" for="image">
-                                Brand Image
+                                Image
                             </label>
                             <div class="flex flex-col image-preview">
                                 <div class="flex itmes-center justify-center py-4">
                                     <img class="w-96 h-72 object-cover rounded-3xl"
-                                        src="{{ asset(\App\Models\Brand::PLACEHOLDER_IMAGE_PATH) }}" alt="">
+                                        src="{{ asset(\App\Models\Product::PLACEHOLDER_IMAGE_PATH) }}" alt="">
                                 </div>
 
                                 <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg"

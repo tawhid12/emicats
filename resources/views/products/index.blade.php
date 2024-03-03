@@ -55,13 +55,22 @@
                     </div>
                 @endif
 
-                <table class="table-fixed w-full mt-3 text-sm">
+                <table class="table-fixed w-full mt-3 text-xs">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2 w-20">No.</th>
-                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">No.</th>
+                            <th class="px-4 py-2">Title</th>
+                            <th class="px-4 py-2">Reference</th>
+                            <th class="px-4 py-2" style="width: 400px">Description</th>
+                            <th class="px-4 py-2">Manu</th>
+                            <th class="px-4 py-2">Weight</th>
+                            <th class="px-4 py-2">Brands</th>
+                            <th class="px-4 py-2">Models</th>
+                            <th class="px-4 py-2">Year</th>
+                            <th class="px-4 py-2">Component</th>
+                            <th class="px-4 py-2">Status</th>
                             <th class="px-4 py-2">Image</th>
-                            <th class="px-4 py-2">Action</th>
+                            <th class="px-4 py-2" style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,14 +78,48 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $loop->iteration }}</td>
                                 <td class="border px-4 py-2">{{ $p->title }}</td>
+                                <td>
+                                    {{ $p->ref }},
+                                    {{ $p->ref1 }},
+                                    {{ $p->ref2 }}
+                                </td>
+                                <td class="border px-4 py-2 w-50">{{ $p->description }}</td>
+                                <td class="border px-4 py-2">{{ $p->manufacturer->manu_name }}</td>
+                                <td class="border px-4 py-2">{{ $p->weight }}</td>
+                                <td class="border px-4 py-2" style="width:300px">
+                                    @php
+                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                    @endphp
+                                    {{ $brandNames }}
+                                </td>
+                                <td class="border px-4 py-2" style="width:300px">
+                                    @php
+                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                    @endphp
+                                    {{ $brandNames }}
+                                </td>
+                                <td class="border px-4 py-2" style="width:300px">
+                                    @php
+                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                    @endphp
+                                    {{ $brandNames }}
+                                </td>
+                                <td class="border px-4 py-2" style="width:300px">
+                                    @php
+                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                    @endphp
+                                    {{ $brandNames }}
+                                </td>
+                                <td class="border px-4 py-2">{{ $p->status }}</td>
                                 <td class="border px-4 py-2">
-                                    <img class="w-20 h-16 object-cover" src="{{ asset($p->image_url) }}" alt="">
+                                    <img class="w-20 h-16 object-cover" src="{{ asset($p->image_url) }}"
+                                        alt="">
                                 </td>
                                 <td class="border px-4 py-2">
                                     <a href="{{ route('brands.edit', $p) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Edit</a>
                                     <a href=""
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</a>
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Delete</a>
                                 </td>
                             </tr>
                         @empty

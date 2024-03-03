@@ -15,7 +15,7 @@ class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */0
     public function index()
     {
     }

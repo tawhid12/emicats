@@ -3,25 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Constants\Role;
-use App\Http\Requests\Product\StoreProductRequest;
-use App\Models\Product;
-use App\Models\Brand;
-use App\Models\CarModel;
-use App\Models\Manufacturer;
+use App\Http\Requests\Component\StoreComponentRequest;
 use App\Models\Component;
-use App\Models\User;
-use App\Service\ProductService;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ComponentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->paginate(10);
-        return view("products.index", compact("products"));
+        $components = Component::paginate(10);
+        return view("com.index", compact("components"));
     }
 
     /**
@@ -29,23 +23,22 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = Brand::orderBy('b_name', 'asc')->get();
-        $carmodels = CarModel::orderBy('model_name', 'asc')->get();
-        $manufacturers = Manufacturer::orderBy('manu_name', 'asc')->get();
-        $components = Component::orderBy('c_name', 'asc')->get();
-        return view("products.create", compact("brands", "carmodels", "manufacturers", "components"));
+        return view("manufacturers.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request,  ProductService $ProductService)
+    public function store(StoreManufacturerRequest $request,  ManufacturerService $ManufacturerService)
     {
-
-        dd($request->all());
-        $ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
-        //throw new \Exception('offer not created');
-
+        try {
+            //dd($request->all());
+            $ManufacturerService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            //throw new \Exception('offer not created');
+            return redirect()->back()->with(['success' => 'Manufacturer Created']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Something Went Wrong']);
+        }
     }
 
     /**
