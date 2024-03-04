@@ -94,9 +94,9 @@
                                 </td>
                                 <td class="border px-4 py-2" style="width:300px">
                                     @php
-                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                        $carmodels = $p->carmodels->pluck('model_name')->implode(', ');
                                     @endphp
-                                    {{ $brandNames }}
+                                    {{ $carmodels }}
                                 </td>
                                 <td class="border px-4 py-2" style="width:300px">
                                     @php

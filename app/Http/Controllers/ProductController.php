@@ -41,11 +41,14 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request,  ProductService $ProductService)
     {
-
-        dd($request->all());
-        $ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
-        //throw new \Exception('offer not created');
-
+        try {
+            //dd($request->all());
+            $ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            //throw new \Exception('offer not created');
+            return redirect()->back()->with(['success' => 'Product Created']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Something Went Wrong']);
+        }
     }
 
     /**

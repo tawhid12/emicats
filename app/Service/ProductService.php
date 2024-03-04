@@ -9,6 +9,12 @@ class ProductService
 {
     public function store(array $data, $image)
     {
+        /*$data = array_merge(
+            ['years' => implode(',', $data['years'])],
+            $data
+        );*/
+        print_r($data);
+        die;
         DB::transaction(
             function () use ($data, $image) {
                 $product = Product::create($data);

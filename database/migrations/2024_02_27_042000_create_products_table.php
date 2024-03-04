@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('ref1')->index()->nullable();
             $table->text('ref2')->index()->nullable();
             $table->text('description')->nullable();
+            $table->text('years')->nullable();
             $table->foreignId('manufacturer_id')->constrained('manufacturers')->nullable();
             $table->decimal('weight', 10, 2)->default(0.00);
             $table->string('status')->default(Status::DRAFT);
