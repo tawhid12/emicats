@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\CarModel;
 use App\Models\Manufacturer;
 use App\Models\Component;
+use App\Models\Setting;
 use App\Models\User;
 use App\Service\ProductService;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $setting = Setting::first();
         $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->paginate(10);
-        return view("products.index", compact("products"));
+        return view("products.index", compact("products", "setting"));
     }
 
     /**
@@ -42,7 +44,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request,  ProductService $ProductService)
     {
         try {
-            //dd($request->all());
+            dd($request->all());
             $ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
             //throw new \Exception('offer not created');
             return redirect()->back()->with(['success' => 'Product Created']);

@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CarModelSeeder::class,
             ComponentSeeder::class,
-            //ProductSeeder::class,
+            ProductSeeder::class,
+            SettingSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

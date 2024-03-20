@@ -58,10 +58,10 @@
                 <table class="table-fixed w-full mt-3 text-xs">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2">No.</th>
+                            <th class="px-1 py-1">No.</th>
                             <th class="px-4 py-2">Title</th>
                             <th class="px-4 py-2">Reference</th>
-                            <th class="px-4 py-2" style="width: 400px">Description</th>
+                            {{-- <th class="px-4 py-2" style="width: 300px">Description</th> --}}
                             <th class="px-4 py-2">Manu</th>
                             <th class="px-4 py-2">Weight</th>
                             <th class="px-4 py-2">Brands</th>
@@ -70,20 +70,21 @@
                             <th class="px-4 py-2">Component</th>
                             <th class="px-4 py-2">Status</th>
                             <th class="px-4 py-2">Image</th>
+                            <th class="px-4 py-2">Price</th>
                             <th class="px-4 py-2" style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($products as $p)
                             <tr>
-                                <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                                <td class="border px-1 py-1">{{ $loop->iteration }}</td>
                                 <td class="border px-4 py-2">{{ $p->title }}</td>
-                                <td>
+                                <td class="border px-4 py-2">
                                     {{ $p->ref }},
                                     {{ $p->ref1 }},
                                     {{ $p->ref2 }}
                                 </td>
-                                <td class="border px-4 py-2 w-50">{{ $p->description }}</td>
+                                {{-- <td class="border px-4 py-2 w-50">{{ $p->description }}</td> --}}
                                 <td class="border px-4 py-2">{{ $p->manufacturer->manu_name }}</td>
                                 <td class="border px-4 py-2">{{ $p->weight }}</td>
                                 <td class="border px-4 py-2" style="width:300px">
@@ -99,16 +100,13 @@
                                     {{ $carmodels }}
                                 </td>
                                 <td class="border px-4 py-2" style="width:300px">
-                                    @php
-                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
-                                    @endphp
-                                    {{ $brandNames }}
+                                    {{ $p->years }}
                                 </td>
                                 <td class="border px-4 py-2" style="width:300px">
                                     @php
-                                        $brandNames = $p->brands->pluck('b_name')->implode(', ');
+                                        $componentNames = $p->components->pluck('c_name')->implode(', ');
                                     @endphp
-                                    {{ $brandNames }}
+                                    {{ $componentNames }}
                                 </td>
                                 <td class="border px-4 py-2">{{ $p->status }}</td>
                                 <td class="border px-4 py-2">
@@ -116,8 +114,36 @@
                                         alt="">
                                 </td>
                                 <td class="border px-4 py-2">
+                                    <p>
+                                        <strong>Per Kilo Price</strong>
+                                        @php
+                                            $ph =
+                                                (($p->pt / 1000 / $setting->pt_value) *
+                                                    $setting->pt *
+                                                    $setting->exchange_rate *
+                                                    $setting->pt_per) /
+                                                100;
+                                            $pd =
+                                                (($p->pd / 1000 / $setting->pd_value) *
+                                                    $setting->pd *
+                                                    $setting->exchange_rate *
+                                                    $setting->pd_per) /
+                                                100;
+                                            $rh =
+                                                (($p->rh / 1000 / $setting->rh_value) *
+                                                    $setting->rh *
+                                                    $setting->exchange_rate *
+                                                    $setting->rj_per) /
+                                                100;
+                                            $per_kilo_price = round($ph + $pd + $rh);
+                                        @endphp
+                                        {{ $per_kilo_price }}
+                                        {{ ($p->weight * $per_kilo_price) / 1000 }}
+                                    </p>
+                                </td>
+                                <td class="border px-4 py-2">
                                     <a href="{{ route('brands.edit', $p) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Edit</a>
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 d-block px-4 rounded">Edit</a>
                                     <a href=""
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Delete</a>
                                 </td>

@@ -12,9 +12,9 @@ class ProductService
         /*$data = array_merge(
             ['years' => implode(',', $data['years'])],
             $data
-        );*/
+        );
         print_r($data);
-        die;
+        die;*/
         DB::transaction(
             function () use ($data, $image) {
                 $product = Product::create($data);

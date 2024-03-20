@@ -15,9 +15,9 @@
             cursor: pointer;
         }
 
-        .search-bar {
+        /*.search-bar {
             display: none;
-        }
+        }*/
 
         .search-bar.active {
             display: block;
@@ -101,11 +101,13 @@
                 </ul>
             </div>
             <form
-                class="d-flex align-items-center ms-md-auto ms-lg-auto ms-xl-auto ms-xxl-auto me-0 me-md-2 me-lg-2 me-xl-2 me-xxl-2">
+                class="d-flex align-items-center ms-md-auto ms-lg-auto ms-xl-auto ms-xxl-auto me-0 me-md-2 me-lg-2 me-xl-2 me-xxl-2"
+                action="{{ route('welcome') }}">
                 <div class="search-bar" id="searchBar">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 search_bar" type="search" placeholder="Search" aria-label="Search">
                 </div>
-                <i class="ms-2 fas fa-search search-icon" id="searchIcon"></i>
+                {{-- <i class="ms-2 fas fa-search search-icon" id="searchIcon"></i> --}}
+                <button type="submit" class="ms-2 search-icon"><i class="fas fa-search" id="searchIcon"></i></button>
             </form>
         </div>
     </nav>
@@ -155,6 +157,9 @@
         $(document).ready(function() {
             $('#searchIcon').click(function() {
                 $('.search-bar').toggleClass('active');
+            });
+            $('.search_bar').on('keyup', function() {
+                //console.log($(this).val());
             });
         });
     </script>

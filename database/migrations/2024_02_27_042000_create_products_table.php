@@ -22,6 +22,9 @@ return new class extends Migration
             $table->text('years')->nullable();
             $table->foreignId('manufacturer_id')->constrained('manufacturers')->nullable();
             $table->decimal('weight', 10, 2)->default(0.00);
+            $table->integer('pt')->default(0);
+            $table->integer('pd')->default(0);
+            $table->integer('rh')->default(0);
             $table->string('status')->default(Status::DRAFT);
             $table->timestamps();
             $table->softDeletes();

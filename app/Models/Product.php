@@ -17,8 +17,9 @@ class Product extends Model implements HasMedia
         'ref',
         'ref1',
         'ref2',
+        'years',
         'description',
-        'manufacturer_id ',
+        'manufacturer_id',
         'weight',
         'status'
     ];

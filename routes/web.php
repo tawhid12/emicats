@@ -6,6 +6,8 @@ use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/manufacturers', ManufacturerController::class);
     Route::resource('/products', ProductController::class);
     Route::resource('/components', ComponentController::class);
+    Route::resource('/setting', SettingController::class);
 });
 
 require __DIR__ . '/auth.php';
