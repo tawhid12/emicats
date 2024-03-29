@@ -45,7 +45,7 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        //
+        return view('setting.edit', compact('setting'));
     }
 
     /**
@@ -53,7 +53,23 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        try {
+            $setting->update([
+                'pt' => $request->pt,
+                'pt_value' => $request->pt_value,
+                'pt_per' => $request->pt_per,
+                'pd' => $request->pd,
+                'pd_value' => $request->pd_value,
+                'pd_per' => $request->pd_per,
+                'rh' => $request->rh,
+                'rh_value' => $request->rh_value,
+                'rh_per' => $request->rh_per,
+                'exchange_rate' => $request->exchange_rate,
+            ]);
+            return redirect()->route('setting.index')->with(['success' => 'Setting Updated']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Something Went Wrong']);
+        }
     }
 
     /**

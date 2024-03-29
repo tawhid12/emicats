@@ -152,7 +152,7 @@
                                     </p>
                                 </td>
                                 <td class="border px-4 py-2">
-                                    <a href="{{ route('brands.edit', $p) }}"
+                                    <a href="{{ route('products.edit', $p) }}"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 d-block px-4 rounded">Edit</a>
                                     <a href=""
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Delete</a>

@@ -273,7 +273,7 @@
                             id="searchIcon"></i></button>
                 </form>
             </div>
-            <h4 class="text-center my-3">All Products</h4>
+            <h4 class="text-center my-3">All</h4>
             @foreach ($products as $product)
                 <div class="col-12 col-md-3 my-2">
                     <div class="product-card">
@@ -298,7 +298,31 @@
                             <p class="product-field"><strong>Manufacturer:</strong></p>
                             <p class="product-field"><strong>Year:</strong> {{ $product->year }}</p>
                             <p class="product-field"><strong>Card Model:</strong></p>
-                            <p class="product-price">$19.99</p>
+                            @php
+                                $ph =
+                                    (($product->pt / 1000 / $setting->pt_value) *
+                                        $setting->pt *
+                                        $setting->exchange_rate *
+                                        $setting->pt_per) /
+                                    100;
+                                $pd =
+                                    (($product->pd / 1000 / $setting->pd_value) *
+                                        $setting->pd *
+                                        $setting->exchange_rate *
+                                        $setting->pd_per) /
+                                    100;
+                                $rh =
+                                    (($product->rh / 1000 / $setting->rh_value) *
+                                        $setting->rh *
+                                        $setting->exchange_rate *
+                                        $setting->rh_per) /
+                                    100;
+                                $per_kilo_price = $ph + $pd + $rh;
+                            @endphp
+
+                            {{-- $per_kilo_price --}}
+
+                            <p class="product-price">$ {{ round(($product->weight * $per_kilo_price) / 1000) }}</p>
                             {{-- <button class="btn btn-primary">Add to Cart</button> --}}
                         </div>
                     </div>

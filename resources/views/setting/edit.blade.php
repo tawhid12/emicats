@@ -1,44 +1,137 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Update Brand') }}
+            {{ __('Update Setting') }}
         </h2>
     </x-slot>
     <div class="py-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-center items-center h-full">
                 <div class="w-full sm:max-w-2xl px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                    <form method="POST" action="{{ route('brands.update', $brand->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('setting.update', $setting->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!-- Brand Name -->
                         <div>
                             <label class="block font-medium text-sm text-gray-700" for="brand">
-                                Brand <span class="text-red-400 text-xs">(Required)</span>
+                                PT <span class="text-red-400 text-xs">(Required)</span>
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="b_name" autofocus="autofocus"
-                                value="{{ old('b_name', $brand->b_name) }}">
-                            @error('b_name')
+                                id="brand" type="text" name="pt" autofocus="autofocus"
+                                value="{{ old('pt', $setting->pt) }}">
+                            @error('pt')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
-                        <!-- Logo Upload -->
-                        <div class="mt-4">
-                            <label class="block font-medium text-sm text-gray-700" for="image">
-                                Brand Image
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PT Value<span class="text-red-400 text-xs">(Required)</span>
                             </label>
-                            <div class="flex flex-col image-preview">
-                                <div class="flex itmes-center justify-center py-4">
-                                    <img class="w-96 h-72 object-cover rounded-3xl" src="{{ asset($brand->image_url) }}"
-                                        alt="">
-                                </div>
-
-                                <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg"
-                                    class="image-upload-input">
-                                <p class="text-xs text-gray-500 mt-1">Upload PNG, JPG, or JPEG files only.</p>
-                            </div>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pt_value" autofocus="autofocus"
+                                value="{{ old('pt_value', $setting->pt_value) }}">
+                            @error('pt_value')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PT %<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pt_per" autofocus="autofocus"
+                                value="{{ old('pt_per', $setting->pt_per) }}">
+                            @error('pt_per')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PD <span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pd" autofocus="autofocus"
+                                value="{{ old('pd', $setting->pd) }}">
+                            @error('pd')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PD Value<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pd_value" autofocus="autofocus"
+                                value="{{ old('pd_value', $setting->pd_value) }}">
+                            @error('pt_value')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PT %<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pd_per" autofocus="autofocus"
+                                value="{{ old('pd_per', $setting->pd_per) }}">
+                            @error('pd_per')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                RH <span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="rh" autofocus="autofocus"
+                                value="{{ old('rh', $setting->rh) }}">
+                            @error('rh')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                Rh Value<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="rh_value" autofocus="autofocus"
+                                value="{{ old('rh_value', $setting->rh_value) }}">
+                            @error('rh_value')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                RH %<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="rh_per" autofocus="autofocus"
+                                value="{{ old('rh_per', $setting->rh_per) }}">
+                            @error('rh_per')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                Exchange Rate (AED to Dollar)<span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="exchange_rate" autofocus="autofocus"
+                                value="{{ old('exchange_rate', $setting->exchange_rate) }}">
+                            @error('exchange_rate')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <button type="submit"

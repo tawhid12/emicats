@@ -85,24 +85,45 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Brand $brand)
+    public function edit(Product $product)
     {
         //$this->authorize('update', $offer);
-        return view('brands.edit', compact('brand'));
+        $brands = Brand::orderBy('b_name', 'asc')->get();
+        $carmodels = CarModel::orderBy('model_name', 'asc')->get();
+        $manufacturers = Manufacturer::orderBy('manu_name', 'asc')->get();
+        $components = Component::orderBy('c_name', 'asc')->get();
+        return view('products.edit', compact('product', "brands", "carmodels", "manufacturers", "components"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreBrandRequest $request, User $user, Brand $brand, BrandService $brandService)
+    public function update(Request $request, Product $product)
     {
         try {
-            //dd($request->all());
-            //$this->authorize('update', $brand);
-            //return $user->role === Role::ADMIN || ($user->role === Role::USER   && $user->id === $brand->author_id);
-            $brandService->update($brand, $request->validated(), $request->hasFile('image') ? $request->file('image') : null);
-            //throw new \Exception('offer not created');
-            return redirect()->back()->with(['success' => 'Brand Updated']);
+            $product->update([
+                'title' => $request->title,
+                'ref' => $request->ref,
+                'ref1' => $request->ref1,
+                'ref2' => $request->ref2,
+                'description' => $request->description,
+                'weight' => $request->weight,
+                'pt' => $request->pt,
+                'pd' => $request->pd,
+                'rh' => $request->rh,
+                'years' => $request->years ? implode(',', $request->years) : null
+            ]);
+            // Check if images are present in the request
+            if ($request->hasFile('image')) {
+                // Loop through each uploaded image
+                foreach ($request->file('image') as $image) {
+                    // Add each image to the media collection
+                    $product->addMedia($image)->toMediaCollection();
+                }
+            }
+            $product->brands()->sync($request->brands);
+            $product->carmodels()->sync($request->carmodels);
+            return redirect()->route('product.index')->with(['success' => 'Product Updated']);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => 'Something Went Wrong']);
         }

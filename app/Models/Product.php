@@ -17,10 +17,13 @@ class Product extends Model implements HasMedia
         'ref',
         'ref1',
         'ref2',
-        'years',
         'description',
+        'years',
         'manufacturer_id',
         'weight',
+        'pt',
+        'pd',
+        'rh',
         'status'
     ];
     public function brands()
