@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            BrandSeeder::class,
+            /*BrandSeeder::class,
             CarModelSeeder::class,
             ComponentSeeder::class,
-            ProductSeeder::class,
+            ProductSeeder::class,*/
             SettingSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();

@@ -44,8 +44,29 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request,  ProductService $ProductService)
     {
         try {
-            dd($request->all());
-            $ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
+            $product = new Product;
+            $product->title = $request->title;
+            $product->ref = $request->ref;
+            $product->ref1 = $request->ref1;
+            $product->ref2 = $request->ref2;
+            $product->description = $request->description;
+            $product->weight = $request->weight;
+            $product->pt = $request->pt;
+            $product->pd = $request->pd;
+            $product->rh = $request->rh;
+            $product->years = $request->years ? implode(',', $request->years) : null;
+            $product->save();
+            // Check if images are present in the request
+            if ($request->hasFile('image')) {
+                // Loop through each uploaded image
+                foreach ($request->file('image') as $image) {
+                    // Add each image to the media collection
+                    $product->addMedia($image)->toMediaCollection();
+                }
+            }
+            $product->brands()->sync($request->brands);
+            $product->carmodels()->sync($request->carmodels);
+            //$ProductService->store($request->validated(), $request->hasFile('image') ? $request->file('image') : null);
             //throw new \Exception('offer not created');
             return redirect()->back()->with(['success' => 'Product Created']);
         } catch (\Exception $e) {

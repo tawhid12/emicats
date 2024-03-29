@@ -85,7 +85,7 @@
                                     {{ $p->ref2 }}
                                 </td>
                                 {{-- <td class="border px-4 py-2 w-50">{{ $p->description }}</td> --}}
-                                <td class="border px-4 py-2">{{ $p->manufacturer->manu_name }}</td>
+                                <td class="border px-4 py-2">{{ $p->manufacturer?->manu_name }}</td>
                                 <td class="border px-4 py-2">{{ $p->weight }}</td>
                                 <td class="border px-4 py-2" style="width:300px">
                                     @php
@@ -110,8 +110,17 @@
                                 </td>
                                 <td class="border px-4 py-2">{{ $p->status }}</td>
                                 <td class="border px-4 py-2">
-                                    <img class="w-20 h-16 object-cover" src="{{ asset($p->image_url) }}"
-                                        alt="">
+                                    @if (count($p->getImageUrlAttribute()) > 0)
+                                        <div class="slick-carousel">
+                                            @foreach ($p->getImageUrlAttribute() as $image)
+                                                <img class="w-20 h-16 object-cover" src="{{ $image }}"
+                                                    alt="{{ $p->title }}">
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        {{-- <p>No images available for this product.</p> --}}
+                                        <img src="https://via.placeholder.com/300" alt="Product Image">
+                                    @endif
                                 </td>
                                 <td class="border px-4 py-2">
                                     <p>
@@ -133,12 +142,13 @@
                                                 (($p->rh / 1000 / $setting->rh_value) *
                                                     $setting->rh *
                                                     $setting->exchange_rate *
-                                                    $setting->rj_per) /
+                                                    $setting->rh_per) /
                                                 100;
-                                            $per_kilo_price = round($ph + $pd + $rh);
+                                            $per_kilo_price = $ph + $pd + $rh;
                                         @endphp
-                                        {{ $per_kilo_price }}
-                                        {{ ($p->weight * $per_kilo_price) / 1000 }}
+
+                                        {{-- $per_kilo_price --}}
+                                        {{ round(($p->weight * $per_kilo_price) / 1000) }}
                                     </p>
                                 </td>
                                 <td class="border px-4 py-2">

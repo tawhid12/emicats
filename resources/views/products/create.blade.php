@@ -138,19 +138,19 @@
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="weight" type="text" name="weight" autofocus="autofocus">
+                                id="weight" type="text" name="weight" autofocus="autofocus" required>
                             @error('weight')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block font-medium text-sm text-gray-700" for="ph">
+                            <label class="block font-medium text-sm text-gray-700" for="pt">
                                 Platinum
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="weight" type="text" name="ph" autofocus="autofocus">
-                            @error('ph')
+                                id="weight" type="text" name="pt" autofocus="autofocus" required>
+                            @error('pt')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
@@ -160,7 +160,7 @@
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="weight" type="text" name="pd" autofocus="autofocus">
+                                id="weight" type="text" name="pd" autofocus="autofocus" required>
                             @error('pd')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
@@ -171,7 +171,7 @@
                             </label>
                             <input
                                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="weight" type="text" name="rh" autofocus="autofocus">
+                                id="weight" type="text" name="rh" autofocus="autofocus" required>
                             @error('rh')
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
@@ -182,13 +182,13 @@
                                 Image
                             </label>
                             <div class="flex flex-col image-preview">
-                                <div class="flex itmes-center justify-center py-4">
+                                {{-- <div class="flex itmes-center justify-center py-4">
                                     <img class="w-96 h-72 object-cover rounded-3xl"
                                         src="{{ asset(\App\Models\Product::PLACEHOLDER_IMAGE_PATH) }}" alt="">
-                                </div>
+                                </div> --}}
 
-                                <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg"
-                                    class="image-upload-input">
+                                <input type="file" id="image" name="image[]" accept=".png, .jpg, .jpeg"
+                                    class="image-upload-input" multiple>
                                 <p class="text-xs text-gray-500 mt-1">Upload PNG, JPG, or JPEG files only.</p>
                             </div>
                         </div>
