@@ -168,7 +168,7 @@
         .product-price {
             font-size: 18px;
             font-weight: bold;
-            color: #007bff;
+            color: #008D48;
         }
 
         .product-field {
@@ -275,7 +275,7 @@
             </div>
             <h4 class="text-center my-3">All Products</h4>
             @foreach ($products as $product)
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3 my-2">
                     <div class="product-card">
                         <div class="product-image">
                             @if (count($product->getImageUrlAttribute()) > 0)
