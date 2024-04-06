@@ -12,7 +12,7 @@ class FrontController extends Controller
     {
         $setting = Setting::first();
         if ($request->keyword) {
-            $products = Product::where('ref', 'like', "%$keyword%")
+            $products = Product::where('ref', 'like', "%$request->keyword%")
                 ->orWhere('ref1', 'like', "%$request->keyword%")
                 ->orWhere('ref2', 'like', "%$request->keyword%")
                 ->get();
