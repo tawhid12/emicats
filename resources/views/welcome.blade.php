@@ -277,13 +277,14 @@
             </div>
             <div class="col-md-12 my-2">
                 <form class="d-flex justify-content-end" action="{{ route('welcome') }}">
+                    @csrf
                     <div class="search-bar w-100" id="searchBar">
                         <input class="form-control me-2 search_bar" type="search"
-                            placeholder="Search By Product Keyword Make" aria-label="Search">
+                            placeholder="Search By Product Keyword Make" aria-label="Search" name="keyword">
                     </div>
                     {{-- <i class="ms-2 fas fa-search search-icon" id="searchIcon"></i> --}}
                     <button type="submit" class="ms-2 btn btn-primary search-icon"><i class="fas fa-search"
-                            id="searchIcon" name="keyword"></i></button>
+                            id="searchIcon"></i></button>
                 </form>
             </div>
             <h4 class="text-center my-3">All</h4>
