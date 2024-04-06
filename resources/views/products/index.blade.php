@@ -62,7 +62,7 @@
                             <th class="px-4 py-2">Title</th>
                             <th class="px-4 py-2">Reference</th>
                             {{-- <th class="px-4 py-2" style="width: 300px">Description</th> --}}
-                            <th class="px-4 py-2">Manu</th>
+                            <th class="px-4 py-2">PT|PD|RH</th>
                             <th class="px-4 py-2">Weight</th>
                             <th class="px-4 py-2">Brands</th>
                             <th class="px-4 py-2">Models</th>
@@ -85,7 +85,11 @@
                                     {{ $p->ref2 }}
                                 </td>
                                 {{-- <td class="border px-4 py-2 w-50">{{ $p->description }}</td> --}}
-                                <td class="border px-4 py-2">{{ $p->manufacturer?->manu_name }}</td>
+                                <td class="border px-4 py-2">{{-- $p->manufacturer?->manu_name --}}
+                                    <span>PT:{{ $p->pt }}</span>
+                                    <span>PD:{{ $p->pd }}</span>
+                                    <span>RH:{{ $p->rh }}</span>
+                                </td>
                                 <td class="border px-4 py-2">{{ $p->weight }}</td>
                                 <td class="border px-4 py-2" style="width:300px">
                                     @php
@@ -124,7 +128,7 @@
                                 </td>
                                 <td class="border px-4 py-2">
                                     <p>
-                                        <strong>Per Kilo Price</strong>
+                                        {{-- <strong>Per Kilo Price</strong> --}}
                                         @php
                                             $ph =
                                                 (($p->pt / 1000 / $setting->pt_value) *

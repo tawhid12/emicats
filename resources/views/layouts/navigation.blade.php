@@ -15,24 +15,26 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('brands.index')" :active="request()->routeIs('brands.index')">
-                        {{ __('Brands') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('carmodels.index')" :active="request()->routeIs('carmodels.index')">
-                        {{ __('Car Models') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('manufacturers.index')" :active="request()->routeIs('manufacturers.index')">
-                        {{ __('Manuafacturers') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('components.index')" :active="request()->routeIs('components.index')">
-                        {{ __('Components') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                        {{ __('Products') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.index')">
-                        {{ __('Setting') }}
-                    </x-nav-link>
+                    @if (Auth::user()->role == 'admin')
+                        <x-nav-link :href="route('brands.index')" :active="request()->routeIs('brands.index')">
+                            {{ __('Brands') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('carmodels.index')" :active="request()->routeIs('carmodels.index')">
+                            {{ __('Car Models') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('manufacturers.index')" :active="request()->routeIs('manufacturers.index')">
+                            {{ __('Manuafacturers') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('components.index')" :active="request()->routeIs('components.index')">
+                            {{ __('Components') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                            {{ __('Products') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.index')">
+                            {{ __('Setting') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

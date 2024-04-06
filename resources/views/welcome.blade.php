@@ -205,21 +205,34 @@
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
+                    </li> --}}
+                    @if (Auth::user())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </a></li>
+                                </form>
+                                {{-- <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> --}}
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -270,7 +283,7 @@
                     </div>
                     {{-- <i class="ms-2 fas fa-search search-icon" id="searchIcon"></i> --}}
                     <button type="submit" class="ms-2 btn btn-primary search-icon"><i class="fas fa-search"
-                            id="searchIcon"></i></button>
+                            id="searchIcon" name="keyword"></i></button>
                 </form>
             </div>
             <h4 class="text-center my-3">All</h4>
@@ -294,7 +307,7 @@
                             <p class="product-description">{{ $product->description }}</p>
                             <p class="product-field"><strong>References:</strong> {{ $product->ref1 }},
                                 {{ $product->ref2 }}</p>
-                            <p class="product-field"><strong>Weight:</strong> {{ $product->weight }} grams</p>
+                            <p class="product-field"><strong>Weight:</strong> {{-- $product->weight --}} *****</p>
                             <p class="product-field"><strong>Manufacturer:</strong></p>
                             <p class="product-field"><strong>Year:</strong> {{ $product->year }}</p>
                             <p class="product-field"><strong>Card Model:</strong></p>
@@ -321,8 +334,15 @@
                             @endphp
 
                             {{-- $per_kilo_price --}}
-
-                            <p class="product-price">$ {{ round(($product->weight * $per_kilo_price) / 1000) }}</p>
+                            @if (Auth::user())
+                                <p class="product-price">
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'user')
+                                        AED {{ round(($product->weight * $per_kilo_price) / 1000) }}
+                                    @else
+                                        *****
+                                    @endif
+                                </p>
+                            @endif
                             {{-- <button class="btn btn-primary">Add to Cart</button> --}}
                         </div>
                     </div>
