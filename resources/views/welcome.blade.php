@@ -243,7 +243,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Pt</h5>
-                        <h5 class="card-details m-0">$ {{ $setting->pt }}</h5>
+                        <h5 class="card-details m-0">USD $ {{ $setting->pt }}</h5>
                     </div>
                 </div>
             </div>
@@ -251,7 +251,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Pd</h5>
-                        <h5 class="card-details m-0">$ {{ $setting->pd }}</h5>
+                        <h5 class="card-details m-0">USD $ {{ $setting->pd }}</h5>
                     </div>
                 </div>
             </div>
@@ -259,7 +259,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Rh</h5>
-                        <h5 class="card-details m-0">$ {{ $setting->rh }}</h5>
+                        <h5 class="card-details m-0">USD $ {{ $setting->rh }}</h5>
                     </div>
                 </div>
             </div>
