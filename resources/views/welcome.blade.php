@@ -343,6 +343,14 @@
                                         *****
                                     @endif
                                 </p>
+                            @else
+                                <p class="text-danger text-bold text-center"
+                                    style="text-decoration: none;font-weight:bold;">TO VIEW PRICE
+                                    <br>(Please
+                                    Login
+                                    First)
+                                </p>
+                                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                             @endif
                             {{-- <button class="btn btn-primary">Add to Cart</button> --}}
                         </div>
