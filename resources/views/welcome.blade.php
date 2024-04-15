@@ -350,7 +350,7 @@
                                     Login
                                     First)
                                 </p>
-                                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                                <a href="{{ route('login') }}" class="btn btn-sm btn-primary">Login</a>
                             @endif
                             {{-- <button class="btn btn-primary">Add to Cart</button> --}}
                         </div>
