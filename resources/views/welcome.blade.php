@@ -136,6 +136,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .product-card:hover {
@@ -148,6 +149,7 @@
             display: block;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
+
         }
 
         .product-info {
@@ -158,6 +160,18 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        .product-brand {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 14px;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 5px 22px;
+            background: #008D48;
         }
 
         .product-description {
@@ -302,13 +316,25 @@
                                 {{-- <p>No images available for this product.</p> --}}
                                 <img src="https://via.placeholder.com/300" alt="Product Image">
                             @endif
+                            @forelse ($product->brands as $b)
+                                <h6 class="product-brand">{{ $b->b_name }}</h6>
+                            @empty
+                            @endforelse
                         </div>
                         <div class="product-info">
                             <h5 class="product-title">{{ $product->title }}</h5>
                             <p class="product-description">{{ $product->description }}</p>
                             <p class="product-field"><strong>References:</strong> {{ $product->ref1 }},
                                 {{ $product->ref2 }}</p>
-                            <p class="product-field"><strong>Weight:</strong> {{-- $product->weight --}} *****</p>
+                            <p class="product-field"><strong>Weight:</strong>
+                                @if (Auth::user())
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'user')
+                                        {{ $product->weight }}
+                                    @endif
+                                @else
+                                    *****
+                                @endif
+                            </p>
                             <p class="product-field"><strong>Manufacturer:</strong></p>
                             <p class="product-field"><strong>Year:</strong> {{ $product->year }}</p>
                             <p class="product-field"><strong>Card Model:</strong></p>

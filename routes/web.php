@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/products', ProductController::class);
     Route::resource('/components', ComponentController::class);
     Route::resource('/setting', SettingController::class);
+    Route::resource('/users', UserController::class);
 });
 
 require __DIR__ . '/auth.php';

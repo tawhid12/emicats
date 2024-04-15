@@ -27,6 +27,30 @@
                         </div>
                         <div>
                             <label class="block font-medium text-sm text-gray-700" for="brand">
+                                PD <span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="pd" autofocus="autofocus"
+                                value="{{ old('pd', $setting->pd) }}">
+                            @error('pd')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
+                                RH <span class="text-red-400 text-xs">(Required)</span>
+                            </label>
+                            <input
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
+                                id="brand" type="text" name="rh" autofocus="autofocus"
+                                value="{{ old('rh', $setting->rh) }}">
+                            @error('rh')
+                                <p class="text-red-700">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label class="block font-medium text-sm text-gray-700" for="brand">
                                 PT Value<span class="text-red-400 text-xs">(Required)</span>
                             </label>
                             <input
@@ -49,18 +73,7 @@
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
-                                PD <span class="text-red-400 text-xs">(Required)</span>
-                            </label>
-                            <input
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="pd" autofocus="autofocus"
-                                value="{{ old('pd', $setting->pd) }}">
-                            @error('pd')
-                                <p class="text-red-700">{{ $message }}</p>
-                            @enderror
-                        </div>
+
                         <div>
                             <label class="block font-medium text-sm text-gray-700" for="brand">
                                 PD Value<span class="text-red-400 text-xs">(Required)</span>
@@ -85,18 +98,7 @@
                                 <p class="text-red-700">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div>
-                            <label class="block font-medium text-sm text-gray-700" for="brand">
-                                RH <span class="text-red-400 text-xs">(Required)</span>
-                            </label>
-                            <input
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                                id="brand" type="text" name="rh" autofocus="autofocus"
-                                value="{{ old('rh', $setting->rh) }}">
-                            @error('rh')
-                                <p class="text-red-700">{{ $message }}</p>
-                            @enderror
-                        </div>
+
                         <div>
                             <label class="block font-medium text-sm text-gray-700" for="brand">
                                 Rh Value<span class="text-red-400 text-xs">(Required)</span>
