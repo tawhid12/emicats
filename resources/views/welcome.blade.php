@@ -345,7 +345,7 @@
                                 </p>
                             @else
                                 <p class="text-danger text-bold text-center"
-                                    style="text-decoration: none;font-weight:bold;">TO VIEW PRICE
+                                    style="text-decoration: none;font-weight:bold;font-size:14px;">TO VIEW PRICE
                                     <br>(Please
                                     Login
                                     First)
