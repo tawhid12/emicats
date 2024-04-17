@@ -12,6 +12,7 @@ use App\Models\Component;
 use App\Models\Setting;
 use App\Models\User;
 use App\Service\ProductService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,7 +23,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $setting = Setting::first();
-        $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->paginate(10);
+        if ($request->search) {
+            $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->where('ref', 'like', "%$request->keyword%")
+                ->orWhere('ref1', 'like', "%$request->keyword%")
+                ->orWhere('ref2', 'like', "%$request->keyword%")->whereNull('deleted_at')->paginate(10);
+        }
+        $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->whereNull('deleted_at')->paginate(10);
         return view("products.index", compact("products", "setting"));
     }
 
@@ -132,8 +138,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $product->deleted_at = Carbon::now();
+        $product->update();
+        return redirect()->back()->with(['success' => 'Product Deleted']);
     }
 }

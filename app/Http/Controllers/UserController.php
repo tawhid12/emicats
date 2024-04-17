@@ -13,13 +13,13 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', 'user')->whereNull('email_verified_at')->paginate(10);
+        $users = User::where('role', 'user')/*->whereNull('email_verified_at')*/->paginate(10);
         return view('user.index', compact('users'));
     }
     public function edit($user)
     {
         $user = User::findOrFail($user);
-        $user->email_verified_at = Carbon::now();
+        $user->status = $user->status == 1 ? 0 : 1; // Toggle the status between 0 and 1
         $user->save();
         //Auth::login($user, true); // Set remember token
         //return redirect(RouteServiceProvider::HOME);

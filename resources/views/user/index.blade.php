@@ -56,6 +56,7 @@
                             <th class="px-1 py-1">No.</th>
                             <th class="px-4 py-2">Name</th>
                             <th class="px-4 py-2">Email</th>
+                            <th class="px-4 py-2">Status</th>
                             <th class="px-4 py-2" style="width:100px">Action</th>
                         </tr>
                     </thead>
@@ -66,8 +67,21 @@
                                 <td class="border px-4 py-2">{{ $u->name }}</td>
                                 <td class="border px-4 py-2">{{ $u->email }}</td>
                                 <td class="border px-4 py-2">
+                                    @if ($u->status == 1)
+                                        Approve
+                                    @else
+                                        UnApprove
+                                    @endif
+                                </td>
+                                <td class="border px-4 py-2">
                                     <a href="{{ route('users.edit', $u) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 d-block px-4 rounded">Approve</a>
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 d-block px-4 rounded">
+                                        @if ($u->status == 1)
+                                            Unapprove
+                                        @else
+                                            Approve
+                                        @endif
+                                    </a>
                                 </td>
                             </tr>
                         @empty

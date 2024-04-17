@@ -333,7 +333,7 @@
                                 {{ $product->ref2 }}</p>
                             <p class="product-field"><strong>Weight:</strong>
                                 @if (Auth::user())
-                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'user')
+                                    @if (Auth::user()->role == 'admin')
                                         {{ $product->weight }}
                                     @endif
                                 @else
