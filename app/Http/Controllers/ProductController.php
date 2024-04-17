@@ -24,9 +24,9 @@ class ProductController extends Controller
     {
         $setting = Setting::first();
         if ($request->search) {
-            $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->where('ref', 'like', "%$request->keyword%")
-                ->orWhere('ref1', 'like', "%$request->keyword%")
-                ->orWhere('ref2', 'like', "%$request->keyword%")->whereNull('deleted_at')->paginate(10);
+            $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->where('ref', 'like', "%$request->search%")
+                ->orWhere('ref1', 'like', "%$request->search%")
+                ->orWhere('ref2', 'like', "%$request->search%")->whereNull('deleted_at')->paginate(10);
         }
         $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->whereNull('deleted_at')->paginate(10);
         return view("products.index", compact("products", "setting"));
