@@ -262,7 +262,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Pt</h5>
-                        <h5 class="card-details m-0">USD $ {{ $setting->pt }}</h5>
+                        <h5 class="card-details m-0">USD {{ $setting->pt }}</h5>
                     </div>
                 </div>
             </div>
@@ -270,7 +270,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Pd</h5>
-                        <h5 class="card-details m-0">USD $ {{ $setting->pd }}</h5>
+                        <h5 class="card-details m-0">USD {{ $setting->pd }}</h5>
                     </div>
                 </div>
             </div>
@@ -278,7 +278,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Rh</h5>
-                        <h5 class="card-details m-0">USD $ {{ $setting->rh }}</h5>
+                        <h5 class="card-details m-0">USD {{ $setting->rh }}</h5>
                     </div>
                 </div>
             </div>
@@ -289,7 +289,7 @@
             <div class="col-md-12">
                 <div class="card p-2">
                     {{-- <div class="brand-name text-center" style="color: #fff">emicats</div> --}}
-                    <div class="tagline text-center px-5" style="color: #fff">Emirates Catalysts Recycling - Scrap at
+                    <div class="tagline text-center px-5" style="color: #fff">Emicats Catalysts Recycling - Scrap at
                         the
                         right price</div>
                 </div>
