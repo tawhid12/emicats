@@ -388,7 +388,9 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-md-12">
+            <!-- Pagination -->
+            <div class="col-md-12 my-2">
+                <!-- Display pagination links -->
                 {{ $products->links() }}
             </div>
         </div>
