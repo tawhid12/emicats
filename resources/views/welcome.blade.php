@@ -391,7 +391,7 @@
             <!-- Pagination -->
             <div class="col-md-12 my-2">
                 <!-- Display pagination links -->
-                {{ $products->links('vendor.pagination.bootstrap') }}
+                {{ $products->links() }}
             </div>
         </div>
     </div>
