@@ -15,9 +15,10 @@ class FrontController extends Controller
             $products = Product::where('ref', 'like', "%$request->keyword%")
                 ->orWhere('ref1', 'like', "%$request->keyword%")
                 ->orWhere('ref2', 'like', "%$request->keyword%")
-                ->get();
+                ->whereNull('deleted_at')
+                ->paginate(10);
         } else {
-            $products = Product::all();
+            $products = Product::whereNull('deleted_at')->paginate(10);
         }
         return view('welcome', compact('setting', 'products'));
     }

@@ -388,6 +388,9 @@
                     </div>
                 </div>
             @endforeach
+            <div class="col-md-12">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 
