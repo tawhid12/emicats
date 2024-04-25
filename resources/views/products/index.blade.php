@@ -176,7 +176,7 @@
                     </tbody>
                 </table>
                 <div class="py-4">
-                    {{ $products->links() }}
+                    {{ $products->links('pagination.custom') }}
                 </div>
             </div>
         </div>

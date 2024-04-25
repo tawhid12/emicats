@@ -162,10 +162,22 @@
             margin-bottom: 10px;
         }
 
-        .product-brand {
+        .product-brand-0 {
             position: absolute;
             top: 0;
             left: 0;
+            font-size: 14px;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 5px 22px;
+            background: #008D48;
+        }
+
+        .product-brand-1 {
+            position: absolute;
+            top: 0;
+            right: 0;
             font-size: 14px;
             color: #fff;
             border: 2px solid #fff;
@@ -322,7 +334,7 @@
                                 <img src="https://via.placeholder.com/300" alt="Product Image">
                             @endif
                             @forelse ($product->brands as $b)
-                                <h6 class="product-brand">{{ $b->b_name }}</h6>
+                                <h6 class="product-brand-{{ $loop->index }}">{{ $b->b_name }}</h6>
                             @empty
                             @endforelse
                         </div>
