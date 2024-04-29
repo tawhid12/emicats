@@ -12,9 +12,17 @@ class FrontController extends Controller
     {
         $setting = Setting::first();
         if ($request->keyword) {
-            $products = Product::where('ref', 'like', "%$request->keyword%")
-                ->orWhere('ref1', 'like', "%$request->keyword%")
-                ->orWhere('ref2', 'like', "%$request->keyword%")
+            $keywords = explode(' ', $request->keyword);
+
+            $products = Product::where(function ($query) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $query->where(function ($query) use ($keyword) {
+                        $query->where('ref', 'like', "%$keyword%")
+                            ->orWhere('ref1', 'like', "%$keyword%")
+                            ->orWhere('ref2', 'like', "%$keyword%");
+                    });
+                }
+            })
                 ->whereNull('deleted_at')
                 ->paginate(10);
         } else {

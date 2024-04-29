@@ -26,9 +26,18 @@ class ProductController extends Controller
         $totalProducts = Product::count();
         $setting = Setting::first();
         if ($request->search) {
-            $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->where('ref', 'like', "%$request->search%")
-                ->orWhere('ref1', 'like', "%$request->search%")
-                ->orWhere('ref2', 'like', "%$request->search%")->whereNull('deleted_at')->paginate(10);
+            $names = explode(' ', $request->search);
+            $query = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->whereNull('deleted_at');
+
+            foreach ($names as $name) {
+                $query->where(function ($query) use ($name) {
+                    $query->where('ref', 'like', "%$name%")
+                        ->orWhere('ref1', 'like', "%$name%")
+                        ->orWhere('ref2', 'like', "%$name%");
+                });
+            }
+
+            $products = $query->paginate(10);
         } else {
             $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->whereNull('deleted_at')->paginate(10);
         }
