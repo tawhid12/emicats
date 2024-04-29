@@ -4,7 +4,7 @@
             {{ __('Product List') }}
         </h2>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Total Products {{ $products->count() }}
+            Total Products {{ $totalProducts }}
         </h2>
     </x-slot>
 

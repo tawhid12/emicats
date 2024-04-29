@@ -22,6 +22,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        // Count all products
+        $totalProducts = Product::count();
         $setting = Setting::first();
         if ($request->search) {
             $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->where('ref', 'like', "%$request->search%")
@@ -31,7 +33,7 @@ class ProductController extends Controller
             $products = Product::with(['brands', 'carmodels', 'components', 'manufacturer'])->whereNull('deleted_at')->paginate(10);
         }
 
-        return view("products.index", compact("products", "setting"));
+        return view("products.index", compact("products", "setting", "totalProducts"));
     }
 
     /**
