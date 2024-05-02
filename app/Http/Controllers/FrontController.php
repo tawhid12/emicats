@@ -23,8 +23,9 @@ class FrontController extends Controller
                     });
                 }
             })
-                ->whereNull('deleted_at')
-                ->paginate(10);
+                ->whereNull('deleted_at');
+
+            $products = $products->paginate(10)->appends([]);
         } else {
             $products = Product::whereNull('deleted_at')->paginate(10);
         }
