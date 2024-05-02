@@ -11,19 +11,10 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $setting = Setting::first();
-        $keywords = explode(' ', $request->keyword);
-        $productsQuery = Product::where(function ($query) use ($keywords) {
-            foreach ($keywords as $keyword) {
-                $query->where(function ($query) use ($keyword) {
-                    $query->where('ref', 'like', "%$keyword%")
-                        ->orWhere('ref1', 'like', "%$keyword%")
-                        ->orWhere('ref2', 'like', "%$keyword%");
-                });
-            }
-        })->whereNull('deleted_at');
         if ($request->keyword) {
             $keywords = explode(' ', $request->keyword);
-            $productsQuery->where(function ($query) use ($keywords) {
+
+            $products = Product::where(function ($query) use ($keywords) {
                 foreach ($keywords as $keyword) {
                     $query->where(function ($query) use ($keyword) {
                         $query->where('ref', 'like', "%$keyword%")
@@ -31,8 +22,9 @@ class FrontController extends Controller
                             ->orWhere('ref2', 'like', "%$keyword%");
                     });
                 }
-            });
-            $products = $productsQuery->paginate(10);
+            })
+                ->whereNull('deleted_at')
+                ->paginate(10)->withQueryString(); // Ensure that the query string is preserved in pagination links
         } else {
             $products = Product::whereNull('deleted_at')->paginate(10);
         }
