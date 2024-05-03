@@ -166,23 +166,23 @@
             position: absolute;
             top: 0;
             left: 0;
-            font-size: 14px;
+            font-size: 11px;
             color: #fff;
             border: 2px solid #fff;
             border-radius: 8px;
-            padding: 5px 22px;
+            padding: 5px 10px;
             background: #008D48;
         }
 
         .product-brand-1 {
             position: absolute;
-            top: 0;
-            left: 75px;
-            font-size: 14px;
+            top: 30px;
+            left: 0px;
+            font-size: 11px;
             color: #fff;
             border: 2px solid #fff;
             border-radius: 8px;
-            padding: 5px 22px;
+            padding: 5px 10px;
             background: #008D48;
         }
 
