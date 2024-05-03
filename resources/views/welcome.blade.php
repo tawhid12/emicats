@@ -176,7 +176,7 @@
 
         .product-brand-1 {
             position: absolute;
-            top: 30px;
+            top: 28px;
             left: 0px;
             font-size: 11px;
             color: #fff;
